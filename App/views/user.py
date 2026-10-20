@@ -21,7 +21,7 @@ def login():
     data = request.json
     result = jwt_authenticate(data['username'], data['password'])
     if not result:
-        return jsonify(error="invalid credentials")
+        return jsonify(error="invalid credentials"), 400
     return jsonify(access_token=result)
 
 @user_views.route('/users', methods=['GET'])
